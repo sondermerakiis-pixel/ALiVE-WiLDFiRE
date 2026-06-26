@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALiVE-WiLDFiRE by AOS</title>
+  
+  <!-- Mapbox GL JS CDN -->
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet" />
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- ============================================================
+     ALiVE-WiLDFiRE — NDA TOKEN GATE — HTML
+     ============================================================
+     INTEGRATION FOR ANTI:
+     Add this HTML block as the FIRST child of <body>, before
+     everything else (before <header>).
+     ============================================================ -->
+
+<div id="nda-gate" class="nda-gate">
+  <div class="nda-container">
+
+    <!-- Header -->
+    <div class="nda-header">
+      <div class="nda-logo">🔥</div>
+      <h2>ALiVE-WiLDFiRE</h2>
+      <div class="nda-subtitle">Confidential Access Agreement</div>
+    </div>
+
+    <!-- NDA Terms -->
+    <div class="nda-terms-box">
+      <h4>Non-Disclosure Agreement</h4>
+      <p>
+        This Non-Disclosure Agreement ("Agreement") is entered into by and between
+        <strong>AOS (Abdur Operating System)</strong> ("Disclosing Party") and the
+        individual accepting below ("Receiving Party"), effective as of the date
+        of electronic acceptance.
+      </p>
+
+      <h4>1. Confidential Information</h4>
+      <p>
+        "Confidential Information" includes all proprietary data, methodologies,
+        algorithms, spatial intelligence models, predictive fire spread calculations,
+        radiant heat hazard zone formulas, platform architecture, source code,
+        GIS analytics, evacuation routing logic, and any operational data displayed
+        or transmitted through the ALiVE-WiLDFiRE platform.
+      </p>
+
+      <h4>2. Obligations of Receiving Party</h4>
+      <ul>
+        <li>Receiving Party shall not disclose, publish, or disseminate any
+            Confidential Information to third parties without prior written
+            consent of the Disclosing Party.</li>
+        <li>Receiving Party shall use Confidential Information solely for the
+            purpose of evaluating, reviewing, or collaborating on the
+            ALiVE-WiLDFiRE platform as authorized.</li>
+        <li>Receiving Party shall not reverse-engineer, decompile, or reproduce
+            any proprietary algorithms, models, or analytical engines contained
+            within the platform.</li>
+        <li>Receiving Party shall exercise reasonable care to protect the
+            confidentiality of all information accessed through this platform.</li>
+      </ul>
+
+      <h4>3. Exclusions</h4>
+      <p>
+        This Agreement does not apply to information that: (a) is or becomes
+        publicly available through no fault of the Receiving Party; (b) was
+        already known to the Receiving Party prior to disclosure; (c) is
+        independently developed without use of Confidential Information; or
+        (d) is required to be disclosed by law or regulatory authority.
+      </p>
+
+      <h4>4. Duration</h4>
+      <p>
+        This Agreement shall remain in effect for a period of <strong>two (2)
+        years</strong> from the date of acceptance, or until terminated in
+        writing by the Disclosing Party.
+      </p>
+
+      <h4>5. Remedies</h4>
+      <p>
+        The Receiving Party acknowledges that unauthorized disclosure may cause
+        irreparable harm. The Disclosing Party shall be entitled to seek
+        injunctive relief and any other remedies available at law or equity.
+      </p>
+
+      <h4>6. Governing Law</h4>
+      <p>
+        This Agreement shall be governed by and construed in accordance with
+        the laws of the State of California, United States.
+      </p>
+    </div>
+
+    <!-- NDA Form -->
+    <div class="nda-form">
+      <div class="nda-field">
+        <label for="nda-fullname">Full Legal Name *</label>
+        <input type="text" id="nda-fullname" placeholder="Enter your full name" autocomplete="name" />
+      </div>
+
+      <div class="nda-field">
+        <label for="nda-email">Email Address *</label>
+        <input type="email" id="nda-email" placeholder="Enter your email address" autocomplete="email" />
+      </div>
+
+      <div class="nda-field">
+        <label for="nda-org">Organization (Optional)</label>
+        <input type="text" id="nda-org" placeholder="Agency, department, or company" autocomplete="organization" />
+      </div>
+
+      <label class="nda-agree-row">
+        <input type="checkbox" id="nda-checkbox" />
+        <span>
+          I have read, understand, and agree to the terms of this Non-Disclosure
+          Agreement. I acknowledge that all information accessed through this
+          platform is confidential and proprietary.
+        </span>
+      </label>
+
+      <div id="nda-error" class="nda-error"></div>
+
+      <button id="nda-submit" class="nda-submit-btn" onclick="submitNDA()">
+        🔐 Accept NDA & Enter Platform
+      </button>
+    </div>
+
+    <div class="nda-footer">
+      <strong>AOS</strong> · ALiVE-WiLDFiRE · Confidential Platform Access
+    </div>
+
+  </div>
+</div>
+
+  <script src="nda_gate.js"></script>
+
+
+  <!-- Dashboard Header -->
+  <header>
+    <div class="brand">
+      <div class="brand-logo">🔥</div>
+      <div class="brand-text">
+        <h1>ALiVE-WiLDFiRE</h1>
+        <span>by AOS</span>
+      </div>
+    </div>
+    
+    <div class="header-actions">
+      <button id="theme-toggle" class="icon-btn" title="Toggle Light Mode">☀️</button>
+    </div>
+    
+    <div class="header-stats" style="display: flex; align-items: center; gap: 16px;">
+      <div class="stat-pill">
+        <span class="dot active"></span>
+        <span><strong>3</strong> Active Outbreaks</span>
+      </div>
+      <div class="stat-pill">
+        <span class="dot warning"></span>
+        <span>Red Flag Conditions</span>
+      </div>
+      <div class="stat-pill">
+        <span class="dot safe"></span>
+        <span><strong>4</strong> Shelters Active</span>
+      </div>
+      
+      <!-- User Authentication Simulator -->
+      <div class="user-profile">
+        <button class="btn-login" id="btn-login" onclick="toggleLogin()">
+          👤 Community Login
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Low Bandwidth Banner (Hidden by default) -->
+  <div id="low-bw-banner" style="display: none; background: #ef4444; color: white; text-align: center; padding: 8px; font-size: 13px; font-weight: bold; z-index: 1000; position: relative;">
+    ⚠️ Low Bandwidth Mode Active - 3D Terrain & Heavy Layers Disabled
+  </div>
+
+  <!-- Dashboard Layout -->
+  <div class="dashboard-container">
+    
+    <!-- Sidebar Controls -->
+    <div class="sidebar">
+      
+      <!-- Navigation Tabs -->
+      <div class="tab-container" style="padding: 10px 20px 0 20px;">
+        <button class="tab-btn active" id="tab-btn-monitor" onclick="switchTab('monitor')">🔍 Analytics</button>
+        <button class="tab-btn" id="tab-btn-routing" onclick="switchTab('routing')">🗺️ Evac Routes</button>
+        <button class="tab-btn" id="tab-btn-report" onclick="switchTab('report')" style="display: none;">🚨 Report Anomaly</button>
+      </div>
+
+      <!-- Tab Content: Analytics & Monitoring -->
+      <div class="tab-content active" id="tab-content-monitor">
+      
+        <!-- Incident List -->
+        <div class="sidebar-section">
+          <h3>
+          <span>Active Wildfires</span>
+          <span style="font-size: 11px; color: var(--color-orange);">Select to Inspect</span>
+        </h3>
+        <div class="incident-list" id="incident-list-container">
+          <!-- Dynamic cards injected via app.js -->
+        </div>
+      </div>
+      
+      <!-- Selected Fire Physics Telemetry -->
+      <div class="sidebar-section">
+        <h3 id="fire-name-title">Select an Incident</h3>
+        <p id="fire-desc" style="font-size: 13px; color: var(--text-muted); line-height: 1.4; margin-bottom: 16px;">
+          Select a wildfire incident above to fetch active satellite telemetry, fire line intensity, and radiant heat propagation danger radius.
+        </p>
+        
+        <div class="physics-panel">
+          <div class="metric-row">
+            <div class="metric-box">
+              <span class="metric-label">Acreage</span>
+              <span class="metric-value" id="stat-acres">--</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-label">Containment</span>
+              <span class="metric-value highlight-orange" id="stat-containment">--</span>
+            </div>
+          </div>
+          
+          <div class="metric-row">
+            <div class="metric-box">
+              <span class="metric-label">Flame Height</span>
+              <span class="metric-value" id="stat-flame-height">--</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-label">Fire Intensity (HRR)</span>
+              <span class="metric-value highlight-red" id="stat-hrr">--</span>
+            </div>
+          </div>
+
+          <div class="metric-box">
+            <span class="metric-label">Ladder Fuel Critical Radius</span>
+            <span class="metric-value highlight-orange" id="stat-danger-radius">--</span>
+          </div>
+
+          <!-- Formula display for educational/professional context -->
+          <div class="physics-formula">
+            <div id="eq-hrr">Q = -- kW</div>
+            <div id="eq-radius">d_crit = √((chi * Q) / (4 * π * q_crit))</div>
+          </div>
+
+          <!-- Fuel bed hazard level indicator -->
+          <div class="ladder-scale">
+            <div class="scale-label-row">
+              <span>Ladder Fuel Threat: <strong id="ladder-fuel-level" style="color: #ffffff;">MODERATE</strong></span>
+              <span>Propagation Index</span>
+            </div>
+            <div class="scale-bar">
+              <div class="scale-indicator" id="ladder-indicator" style="left: 50%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Meteorological Indicators -->
+      <div class="sidebar-section">
+        <h3>Local Weather Conditions</h3>
+        <div class="physics-panel">
+          <div class="metric-row">
+            <div class="metric-box">
+              <span class="metric-label">Wind Velocity</span>
+              <span class="metric-value" id="weather-wind" style="font-size: 16px;">--</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-label">Relative Humidity</span>
+              <span class="metric-value highlight-orange" id="weather-humidity" style="font-size: 16px;">--</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Community Alert Enrollment -->
+      <div class="sidebar-section">
+        <h3>Community Alert Enrollment</h3>
+        <div class="outreach-console">
+          <div class="form-group">
+            <label for="sub-phone">SMS Phone Number</label>
+            <input type="tel" class="select-custom" id="sub-phone" placeholder="+15551234567" style="background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 8px; padding: 10px; color: #ffffff;">
+          </div>
+          <div style="display: flex; gap: 10px; margin-top: 4px;">
+            <button class="btn-broadcast" id="btn-subscribe-push" style="background: linear-gradient(135deg, var(--color-blue) 0%, #164e63 100%); box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2); flex: 1; padding: 10px 6px; font-size: 13px;" onclick="subscribeToPush()">
+              🔔 Register Push
+            </button>
+            <button class="btn-broadcast" id="btn-subscribe-submit" style="background: linear-gradient(135deg, var(--color-green) 0%, #064e3b 100%); box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2); flex: 1; padding: 10px 6px; font-size: 13px;" onclick="submitSubscription()">
+              📝 Register SMS
+            </button>
+          </div>
+          <span id="sub-status" style="font-size: 11px; color: var(--text-muted); display: block; margin-top: 6px; text-align: center;">Not registered.</span>
+        </div>
+      </div>
+
+      <!-- Spatial Intelligence & GIS Data Feed -->
+      <div class="sidebar-section">
+        <h3>Spatial Intelligence Report</h3>
+        <div class="physics-panel">
+          <div class="metric-row">
+            <div class="metric-box">
+              <span class="metric-label">Calculated Area</span>
+              <span class="metric-value highlight-orange" id="gis-area" style="font-size: 15px;">-- ac</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-label">Perimeter Length</span>
+              <span class="metric-value" id="gis-perimeter" style="font-size: 15px;">-- mi</span>
+            </div>
+          </div>
+          <div class="metric-box" style="gap: 2px;">
+            <span class="metric-label">GeoJSON GIS Contract</span>
+            <div style="display: flex; gap: 8px; margin-top: 6px;">
+              <button class="btn-broadcast" style="background: rgba(255, 255, 255, 0.08); border: 1px solid var(--border-light); box-shadow: none; font-size: 11px; padding: 8px 10px; flex: 1;" onclick="copyGeoJSON()">
+                📋 Copy GeoJSON
+              </button>
+              <button class="btn-broadcast" style="background: rgba(255, 255, 255, 0.08); border: 1px solid var(--border-light); box-shadow: none; font-size: 11px; padding: 8px 10px; flex: 1;" onclick="downloadGeoJSON()">
+                💾 Download GIS
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div> <!-- Close tab-content-monitor -->
+
+      <!-- Tab Content: Evacuation Routing -->
+      <div class="tab-content" id="tab-content-routing">
+        <div class="sidebar-section">
+          <h3>Evacuation Corridors & Volumes</h3>
+          <p style="font-size: 13px; color: var(--text-muted); line-height: 1.4; margin-bottom: 12px;">
+            Real-time status of evacuation corridors escaping active wildfire sectors in Southern California. Bottleneck vectors are automatically highlighted.
+          </p>
+          
+          <table class="route-table">
+            <thead>
+              <tr>
+                <th>Evacuation Corridor</th>
+                <th>Priority</th>
+                <th>Traffic Volume</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>I-15 South (Devore Pass)</strong></td>
+                <td>Primary</td>
+                <td>1,850/hr</td>
+                <td><span class="route-status-tag congested">CONGESTED</span></td>
+              </tr>
+              <tr>
+                <td><strong>SR-138 West (Cajon Route)</strong></td>
+                <td>Secondary</td>
+                <td>620/hr</td>
+                <td><span class="route-status-tag clear">CLEAR</span></td>
+              </tr>
+              <tr>
+                <td><strong>Summit Road (Backcountry)</strong></td>
+                <td>Tertiary</td>
+                <td>240/hr</td>
+                <td><span class="route-status-tag clear">CLEAR</span></td>
+              </tr>
+              <tr>
+                <td><strong>Pacific Coast Hwy (PCH North)</strong></td>
+                <td>Primary</td>
+                <td>980/hr</td>
+                <td><span class="route-status-tag clear">CLEAR</span></td>
+              </tr>
+              <tr>
+                <td><strong>Latigo Canyon Road</strong></td>
+                <td>Secondary</td>
+                <td>350/hr</td>
+                <td><span class="route-status-tag blocked">BLOCKED</span></td>
+              </tr>
+              <tr>
+                <td><strong>I-15 North (High Desert)</strong></td>
+                <td>Primary</td>
+                <td>2,900/hr</td>
+                <td><span class="route-status-tag congested">CONGESTED</span></td>
+              </tr>
+              <tr>
+                <td><strong>Maple Springs Trail</strong></td>
+                <td>Tertiary</td>
+                <td>120/hr</td>
+                <td><span class="route-status-tag clear">CLEAR</span></td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <div class="physics-formula" style="margin-top: 15px; border-left-color: var(--color-orange); color: #ffffff;">
+            <strong>ℹ️ Traffic Volume Advisory:</strong><br/>
+            Primary corridors are currently exhibiting bottlenecks. First responders are advising stakeholders to route outbound civilian flow to secondary and tertiary mountain pathways.
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Content: Report Incident -->
+      <div class="tab-content" id="tab-content-report">
+        <div class="sidebar-section">
+          <h3>Report Wildfire Anomaly</h3>
+          <p style="font-size: 13px; color: var(--text-muted); line-height: 1.4; margin-bottom: 15px;">
+            As a logged-in community member, you can report new outbreaks directly to stakeholders and first responders. Enable map click to fetch coordinates, fill details, and submit.
+          </p>
+          
+          <div class="outreach-console">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px;">
+              <span style="font-size: 12px; font-weight: 500; color: var(--text-muted);">Coordinate Selection Mode</span>
+              <button class="btn-login" id="btn-toggle-picker" onclick="toggleCoordinatePicker()" style="font-size: 11px; padding: 4px 10px; border-color: var(--color-orange); color: var(--color-orange); border-radius: 6px;">
+                🖱️ Enable Map Click
+              </button>
+            </div>
+            
+            <div class="form-group">
+              <label for="report-name">Incident Name</label>
+              <input type="text" class="select-custom" id="report-name" placeholder="e.g. Cajon Brush Fire">
+            </div>
+
+            <div class="metric-row">
+              <div class="form-group">
+                <label for="report-lat">Latitude</label>
+                <input type="number" step="0.0001" class="select-custom" id="report-lat" placeholder="34.1842">
+              </div>
+              <div class="form-group">
+                <label for="report-lng">Longitude</label>
+                <input type="number" step="0.0001" class="select-custom" id="report-lng" placeholder="-117.3156">
+              </div>
+            </div>
+
+            <div class="metric-row">
+              <div class="form-group">
+                <label for="report-size">Est. Size (Acres)</label>
+                <input type="number" class="select-custom" id="report-size" placeholder="15">
+              </div>
+              <div class="form-group">
+                <label for="report-fuel">Ladder Fuel Type</label>
+                <select class="select-custom" id="report-fuel">
+                  <option value="CRITICAL">Old Timber (Critical)</option>
+                  <option value="EXTREME">Heavy Chaparral (Extreme)</option>
+                  <option value="MODERATE">Mixed Brush (Moderate)</option>
+                  <option value="LOW">Dry Grass (Low)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="report-desc">Description</label>
+              <textarea class="textarea-custom" id="report-desc" placeholder="Details of smoke, flame columns, houses threatened..." style="height: 60px;"></textarea>
+            </div>
+
+            <button class="btn-broadcast" onclick="submitCommunityReport()" style="background: linear-gradient(135deg, var(--color-red) 0%, #b91c1c 100%); box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);">
+              🚨 Submit Fire Report
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Emergency Alert Outreach Dispatcher -->
+      <div class="sidebar-section" style="border-bottom: none;">
+        <h3>Emergency Outreach Dispatch</h3>
+        <div class="outreach-console">
+          <div class="form-group">
+            <label for="alert-incident">Select Outbreak</label>
+            <select class="select-custom" id="alert-incident">
+              <option value="canyon-fire">Canyon Fire (San Bernardino)</option>
+              <option value="malibu-ridge-fire">Malibu Ridge Fire</option>
+              <option value="cleveland-complex">Cleveland Forest Complex</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="alert-level">Alert Severity</label>
+            <select class="select-custom" id="alert-level">
+              <option value="ADVISORY">EVACUATION ADVISORY</option>
+              <option value="MANDATORY">MANDATORY EVACUATION</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="alert-message">Emergency Warning Message</label>
+            <textarea class="textarea-custom" id="alert-message">MANDATORY EVACUATION: Fire activity has intensified. Radiant heat hazard zone has breached defensive boundaries. Evacuate immediately via designated corridors.</textarea>
+          </div>
+
+          <button class="btn-broadcast" onclick="dispatchAlert()">
+            📡 Broadcast Live Alerts
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Map Canvas Area -->
+    <div class="map-container">
+      <div id="map"></div>
+      
+      <!-- Floating Map Legend -->
+      <div class="map-legend">
+        <div class="legend-title">Mapping Layers</div>
+        <div class="legend-item">
+          <span class="legend-color circle" style="background-color: #ef4444; border: 2px solid #ffcf40; box-shadow: 0 0 8px rgba(239, 68, 68, 0.8);"></span>
+          <span>Fire Anomaly Center</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color" style="background-color: rgba(239, 68, 68, 0.2); border: 2.5px dashed #ff3300;"></span>
+          <span>Active Fire Perimeter</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color" style="background-color: rgba(255, 107, 0, 0.15); border: 1.5px solid #ff3300;"></span>
+          <span>Radiant Heat Hazard Zone</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color circle" style="background-color: #10b981; border: 2px solid #ffffff;"></span>
+          <span>Community Assembly Shelter</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color circle" style="background-color: #3b82f6; border: 2px solid #ffffff;"></span>
+          <span>Incident Command Post</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color" style="background-color: rgba(255, 107, 0, 0.1); border: 2px dashed #ff0055;"></span>
+          <span>Forecasting Cone (1-4hr Spread)</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color" style="background-color: #10b981; height: 5px; border-radius: 2px;"></span>
+          <span>Evacuation Route (Clear)</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color" style="background-color: #ff6b00; height: 5px; border-radius: 2px;"></span>
+          <span>Evacuation Route (Congested)</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-color" style="background-color: #ef4444; height: 5px; border-radius: 2px;"></span>
+          <span>Evacuation Route (Blocked)</span>
+        </div>
+      </div>
+
+      <!-- Emergency Alerts Toasts Container overlay -->
+      <div class="alerts-overlay" id="alerts-overlay">
+        <!-- Injected alerts appear here -->
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Auth Modal -->
+  <div id="auth-modal" onclick="closeAuthModal()" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 100; align-items: center; justify-content: center;">
+    <div onclick="event.stopPropagation()" style="background: var(--bg-primary); border: 1px solid var(--border-light); padding: 24px; border-radius: 16px; width: 340px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+        <h3 id="auth-modal-title" style="color: #ffffff; font-size: 18px; font-weight: 600;">Community Login</h3>
+        <button onclick="closeAuthModal()" style="background: none; border: none; color: var(--text-muted); font-size: 18px; cursor: pointer;">×</button>
+      </div>
+      <div id="auth-error" style="color: var(--color-red); font-size: 12px; margin-bottom: 12px; display: none;"></div>
+      <div class="outreach-console" style="gap: 12px;">
+        <div class="form-group">
+          <label for="auth-username">Username</label>
+          <input type="text" class="select-custom" id="auth-username" placeholder="Abdur Rahman">
+        </div>
+        <div class="form-group">
+          <label for="auth-password">Password</label>
+          <input type="password" class="select-custom" id="auth-password" placeholder="••••••••">
+        </div>
+        <div class="form-group" id="auth-phone-group" style="display: none;">
+          <label for="auth-phone">SMS Phone (E.164)</label>
+          <input type="tel" class="select-custom" id="auth-phone" placeholder="+15551234567">
+        </div>
+        <button class="btn-broadcast" id="auth-submit-btn" onclick="submitAuth()">Login</button>
+        <span id="auth-toggle-msg" style="font-size: 12px; color: var(--text-muted); text-align: center; cursor: pointer; display: block; margin-top: 8px;" onclick="toggleAuthMode()">
+          Don't have an account? Register here.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Controller Logic -->
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+{
+  "users": [
+    {
+      "username": "Abdur Rahman",
+      "passwordHash": "c310881e5f4c8f1a39123dbdd3019658:78dc0e68baff174b00387bec871494f14a8ee0e719c7c5c6af24c97acaaaa466871c0f0c996d3e9141ea69a6fab8c5c3c413055cdccd321e34fb47ba14c488f6",
+      "phone": "+15551234567"
+    }
+  ],
+  "subscribers": [],
+  "incidents": [
+    {
+      "id": "canyon-fire",
+      "name": "Canyon Fire (San Bernardino)",
+      "latitude": 34.1842,
+      "longitude": -117.3156,
+      "acresBurned": 14250,
+      "containment": 35,
+      "flameHeight": 8.5,
+      "heatReleaseRate": 85000,
+      "evacuationStatus": "MANDATORY",
+      "windSpeed": 25,
+      "windDirection": "NE",
+      "humidity": 12,
+      "ladderFuelRisk": "EXTREME",
+      "description": "Rapidly spreading fire fueled by dry Santa Ana wind gusts. Threatening foothill communities in San Bernardino and Devore.",
+      "perimeter": [
+        [
+          -117.34,
+          34.2
+        ],
+        [
+          -117.31,
+          34.22
+        ],
+        [
+          -117.28,
+          34.2
+        ],
+        [
+          -117.29,
+          34.17
+        ],
+        [
+          -117.33,
+          34.16
+        ],
+        [
+          -117.35,
+          34.18
+        ],
+        [
+          -117.34,
+          34.2
+        ]
+      ]
+    },
+    {
+      "id": "malibu-ridge-fire",
+      "name": "Malibu Ridge Fire",
+      "latitude": 34.0583,
+      "longitude": -118.7214,
+      "acresBurned": 4890,
+      "containment": 65,
+      "flameHeight": 4.2,
+      "heatReleaseRate": 32000,
+      "evacuationStatus": "ADVISORY",
+      "windSpeed": 14,
+      "windDirection": "W",
+      "humidity": 28,
+      "ladderFuelRisk": "MODERATE",
+      "description": "Active brush fire burning in steep terrain above Malibu. Structures threatened along Latigo Canyon Road.",
+      "perimeter": [
+        [
+          -118.74,
+          34.07
+        ],
+        [
+          -118.71,
+          34.08
+        ],
+        [
+          -118.7,
+          34.06
+        ],
+        [
+          -118.72,
+          34.04
+        ],
+        [
+          -118.75,
+          34.05
+        ],
+        [
+          -118.74,
+          34.07
+        ]
+      ]
+    },
+    {
+      "id": "cleveland-complex",
+      "name": "Cleveland Forest Complex",
+      "latitude": 33.7258,
+      "longitude": -117.5189,
+      "acresBurned": 22800,
+      "containment": 12,
+      "flameHeight": 14.8,
+      "heatReleaseRate": 165000,
+      "evacuationStatus": "MANDATORY",
+      "windSpeed": 32,
+      "windDirection": "ENE",
+      "humidity": 8,
+      "ladderFuelRisk": "CRITICAL",
+      "description": "Conflagration moving quickly through timber fuels in Cleveland National Forest. Extreme behavior reported with spotting up to 1 mile.",
+      "perimeter": [
+        [
+          -117.56,
+          33.74
+        ],
+        [
+          -117.51,
+          33.76
+        ],
+        [
+          -117.48,
+          33.73
+        ],
+        [
+          -117.49,
+          33.7
+        ],
+        [
+          -117.53,
+          33.68
+        ],
+        [
+          -117.57,
+          33.71
+        ],
+        [
+          -117.56,
+          33.74
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+<!-- ============================================================
+     ALiVE-WiLDFiRE — NDA TOKEN GATE — HTML
+     ============================================================
+     INTEGRATION FOR ANTI:
+     Add this HTML block as the FIRST child of <body>, before
+     everything else (before <header>).
+     ============================================================ -->
+
+<div id="nda-gate" class="nda-gate">
+  <div class="nda-container">
+
+    <!-- Header -->
+    <div class="nda-header">
+      <div class="nda-logo">🔥</div>
+      <h2>ALiVE-WiLDFiRE</h2>
+      <div class="nda-subtitle">Confidential Access Agreement</div>
+    </div>
+
+    <!-- NDA Terms -->
+    <div class="nda-terms-box">
+      <h4>Non-Disclosure Agreement</h4>
+      <p>
+        This Non-Disclosure Agreement ("Agreement") is entered into by and between
+        <strong>AOS (Abdur Operating System)</strong> ("Disclosing Party") and the
+        individual accepting below ("Receiving Party"), effective as of the date
+        of electronic acceptance.
+      </p>
+
+      <h4>1. Confidential Information</h4>
+      <p>
+        "Confidential Information" includes all proprietary data, methodologies,
+        algorithms, spatial intelligence models, predictive fire spread calculations,
+        radiant heat hazard zone formulas, platform architecture, source code,
+        GIS analytics, evacuation routing logic, and any operational data displayed
+        or transmitted through the ALiVE-WiLDFiRE platform.
+      </p>
+
+      <h4>2. Obligations of Receiving Party</h4>
+      <ul>
+        <li>Receiving Party shall not disclose, publish, or disseminate any
+            Confidential Information to third parties without prior written
+            consent of the Disclosing Party.</li>
+        <li>Receiving Party shall use Confidential Information solely for the
+            purpose of evaluating, reviewing, or collaborating on the
+            ALiVE-WiLDFiRE platform as authorized.</li>
+        <li>Receiving Party shall not reverse-engineer, decompile, or reproduce
+            any proprietary algorithms, models, or analytical engines contained
+            within the platform.</li>
+        <li>Receiving Party shall exercise reasonable care to protect the
+            confidentiality of all information accessed through this platform.</li>
+      </ul>
+
+      <h4>3. Exclusions</h4>
+      <p>
+        This Agreement does not apply to information that: (a) is or becomes
+        publicly available through no fault of the Receiving Party; (b) was
+        already known to the Receiving Party prior to disclosure; (c) is
+        independently developed without use of Confidential Information; or
+        (d) is required to be disclosed by law or regulatory authority.
+      </p>
+
+      <h4>4. Duration</h4>
+      <p>
+        This Agreement shall remain in effect for a period of <strong>two (2)
+        years</strong> from the date of acceptance, or until terminated in
+        writing by the Disclosing Party.
+      </p>
+
+      <h4>5. Remedies</h4>
+      <p>
+        The Receiving Party acknowledges that unauthorized disclosure may cause
+        irreparable harm. The Disclosing Party shall be entitled to seek
+        injunctive relief and any other remedies available at law or equity.
+      </p>
+
+      <h4>6. Governing Law</h4>
+      <p>
+        This Agreement shall be governed by and construed in accordance with
+        the laws of the State of California, United States.
+      </p>
+    </div>
+
+    <!-- NDA Form -->
+    <div class="nda-form">
+      <div class="nda-field">
+        <label for="nda-fullname">Full Legal Name *</label>
+        <input type="text" id="nda-fullname" placeholder="Enter your full name" autocomplete="name" />
+      </div>
+
+      <div class="nda-field">
+        <label for="nda-email">Email Address *</label>
+        <input type="email" id="nda-email" placeholder="Enter your email address" autocomplete="email" />
+      </div>
+
+      <div class="nda-field">
+        <label for="nda-org">Organization (Optional)</label>
+        <input type="text" id="nda-org" placeholder="Agency, department, or company" autocomplete="organization" />
+      </div>
+
+      <div class="nda-agree-row" onclick="document.getElementById('nda-checkbox').click()">
+        <input type="checkbox" id="nda-checkbox" />
+        <span>
+          I have read, understand, and agree to the terms of this Non-Disclosure
+          Agreement. I acknowledge that all information accessed through this
+          platform is confidential and proprietary.
+        </span>
+      </div>
+
+      <div id="nda-error" class="nda-error"></div>
+
+      <button id="nda-submit" class="nda-submit-btn" onclick="submitNDA()">
+        🔐 Accept NDA & Enter Platform
+      </button>
+    </div>
+
+    <div class="nda-footer">
+      <strong>AOS</strong> · ALiVE-WiLDFiRE · Confidential Platform Access
+    </div>
+
+  </div>
+</div>

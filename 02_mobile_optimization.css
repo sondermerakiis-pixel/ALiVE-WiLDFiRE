@@ -1,0 +1,379 @@
+/* ============================================================
+   ALiVE-WiLDFiRE — MOBILE & LOW-BANDWIDTH OPTIMIZATION — CSS
+   ============================================================
+   PURPOSE: Ensure the UI is usable on mobile devices with poor
+   cell reception during an actual evacuation. Design priorities:
+   - Large touch targets (min 48px)
+   - Critical info visible without scrolling
+   - Reduced visual complexity on small screens
+   - Offline-capable critical data display
+   - High contrast for outdoor/sunlight readability
+   ============================================================ */
+
+/* -------------------------------------------------------
+   1. RESPONSIVE LAYOUT — MOBILE-FIRST BREAKPOINTS
+   ------------------------------------------------------- */
+
+/* Tablets and small laptops */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 320px !important;
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+  /* --- Core layout: stack sidebar below map --- */
+  .app-container,
+  .main-container,
+  body {
+    flex-direction: column !important;
+    overflow-x: hidden;
+  }
+
+  .sidebar {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: auto !important;
+    width: 100% !important;
+    max-height: 45vh;
+    z-index: 1000;
+    border-radius: 16px 16px 0 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    transition: max-height 0.3s ease;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.4);
+  }
+
+  /* Collapsed state — show only the drag handle + active fire count */
+  .sidebar.collapsed {
+    max-height: 72px;
+    overflow: hidden;
+  }
+
+  /* Map takes full viewport when sidebar is collapsed */
+  .map-container,
+  #map {
+    width: 100% !important;
+    height: 100vh !important;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+  }
+
+  /* --- Header: compact mobile version --- */
+  .header,
+  header {
+    padding: 8px 12px !important;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .header h1,
+  header h1 {
+    font-size: 16px !important;
+  }
+
+  .header .subtitle,
+  .header .brand-subtitle {
+    display: none;
+  }
+
+  /* --- Status bar: horizontal scroll on mobile --- */
+  .status-bar,
+  .stat-cards {
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    padding: 8px 12px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .status-bar::-webkit-scrollbar,
+  .stat-cards::-webkit-scrollbar {
+    display: none;
+  }
+
+  .stat-card {
+    min-width: 120px;
+    flex-shrink: 0;
+  }
+
+  /* --- Fire incident cards: larger touch targets --- */
+  .fire-card,
+  .incident-card,
+  [data-fire-id] {
+    padding: 14px 16px !important;
+    min-height: 64px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(255,107,53,0.2);
+  }
+
+  .fire-card:active,
+  .incident-card:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+
+  /* --- Detail panel: full-width on mobile --- */
+  .detail-panel,
+  .analytics-panel,
+  .fire-detail {
+    padding: 12px !important;
+  }
+
+  .detail-panel h3,
+  .fire-detail h3 {
+    font-size: 16px !important;
+  }
+
+  /* --- Stat grid: 2 columns on mobile instead of 4 --- */
+  .stat-grid,
+  .metrics-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+
+  /* --- Evac corridor table: horizontal scroll --- */
+  .evac-table-container,
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    font-size: 12px !important;
+    min-width: 500px;
+  }
+
+  th, td {
+    padding: 8px 10px !important;
+    white-space: nowrap;
+  }
+
+  /* --- Evac status badges: larger for quick scanning --- */
+  .status-badge,
+  .evac-status {
+    padding: 4px 10px !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    min-width: 80px;
+    text-align: center;
+  }
+
+  /* --- Forms: larger inputs for panicked fingers --- */
+  input, select, textarea {
+    font-size: 16px !important; /* prevents iOS auto-zoom */
+    padding: 12px 14px !important;
+    min-height: 48px;
+    border-radius: 8px !important;
+  }
+
+  button, .btn {
+    min-height: 48px !important;
+    font-size: 14px !important;
+    padding: 12px 20px !important;
+    border-radius: 8px !important;
+  }
+
+  /* --- Map controls: reposition for thumb reach --- */
+  .mapboxgl-ctrl-top-right {
+    top: auto !important;
+    bottom: 56vh !important;
+    right: 8px !important;
+  }
+
+  .mapboxgl-ctrl-group button {
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  /* --- Legend: collapsible on mobile --- */
+  .map-legend,
+  .legend-panel {
+    position: fixed;
+    bottom: 46vh;
+    left: 8px;
+    max-width: 200px;
+    font-size: 11px;
+    max-height: 180px;
+    overflow-y: auto;
+    border-radius: 8px;
+    z-index: 999;
+  }
+
+  /* --- Broadcast panel: full width --- */
+  .broadcast-panel,
+  .dispatch-panel {
+    margin: 8px !important;
+  }
+
+  .broadcast-panel select,
+  .dispatch-panel select {
+    width: 100% !important;
+  }
+
+  /* --- Community report form: streamlined --- */
+  .report-form,
+  .community-report {
+    padding: 12px !important;
+  }
+
+  /* --- GeoJSON section: hide on mobile (not useful during evac) --- */
+  .geojson-section,
+  .gis-contract {
+    display: none !important;
+  }
+
+  /* --- Navigation tabs: horizontal scroll with large targets --- */
+  .nav-tabs,
+  .sidebar-tabs {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 4px;
+    padding: 8px;
+  }
+
+  .nav-tab,
+  .sidebar-tab {
+    min-width: 80px;
+    min-height: 44px;
+    flex-shrink: 0;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+  }
+}
+
+/* Very small phones (iPhone SE, etc.) */
+@media (max-width: 375px) {
+  .sidebar {
+    max-height: 50vh;
+  }
+
+  .stat-grid,
+  .metrics-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .fire-card,
+  .incident-card {
+    padding: 12px !important;
+  }
+
+  .header h1,
+  header h1 {
+    font-size: 14px !important;
+  }
+}
+
+
+/* -------------------------------------------------------
+   2. HIGH-CONTRAST MODE — OUTDOOR SUNLIGHT READABILITY
+   ------------------------------------------------------- */
+
+@media (prefers-contrast: more) {
+  .fire-card,
+  .incident-card {
+    border: 2px solid rgba(255,255,255,0.4) !important;
+  }
+
+  .status-badge[data-status="CONGESTED"],
+  .evac-status.congested {
+    background: #ff6600 !important;
+    color: #000 !important;
+    font-weight: 900 !important;
+  }
+
+  .status-badge[data-status="BLOCKED"],
+  .evac-status.blocked {
+    background: #ff0000 !important;
+    color: #fff !important;
+    font-weight: 900 !important;
+  }
+
+  .freshness-badge {
+    font-weight: 800 !important;
+    border-width: 2px !important;
+  }
+}
+
+
+/* -------------------------------------------------------
+   3. MOBILE DRAG HANDLE — PULL-UP SHEET INDICATOR
+   ------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .sidebar::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 4px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 2px;
+    margin: 8px auto 4px;
+    flex-shrink: 0;
+  }
+}
+
+
+/* -------------------------------------------------------
+   4. REDUCED MOTION — RESPECT USER PREFERENCES
+   ------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* -------------------------------------------------------
+   5. PRINT STYLES — EVACUATION HANDOUT
+   ------------------------------------------------------- */
+
+@media print {
+  .map-container, #map,
+  .broadcast-panel, .dispatch-panel,
+  .report-form, .community-report,
+  .mapboxgl-ctrl-top-right,
+  .map-legend, .legend-panel,
+  nav, .nav-tabs {
+    display: none !important;
+  }
+
+  .sidebar {
+    position: static !important;
+    width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .fire-card, .incident-card,
+  .detail-panel, .fire-detail,
+  table, th, td {
+    background: #fff !important;
+    color: #000 !important;
+    border-color: #333 !important;
+  }
+
+  .evac-status.blocked,
+  .status-badge[data-status="BLOCKED"] {
+    background: #000 !important;
+    color: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

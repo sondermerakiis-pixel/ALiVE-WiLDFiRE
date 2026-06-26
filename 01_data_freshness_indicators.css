@@ -1,0 +1,44 @@
+/* ============================================================
+   ALiVE-WiLDFiRE — DATA FRESHNESS INDICATORS — CSS
+   Add to your existing stylesheet
+   ============================================================ */
+
+@keyframes freshness-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.5; transform: scale(1.4); }
+}
+
+@keyframes freshness-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.2; }
+}
+
+/* Sidebar card badge */
+.freshness-badge {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  cursor: default;
+  user-select: none;
+}
+
+/* Detail panel timestamp row */
+.freshness-detail {
+  font-family: inherit;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+/* -- Light mode overrides (if theme toggle is active) -- */
+[data-theme="light"] .freshness-badge,
+[data-theme="light"] .freshness-detail {
+  backdrop-filter: blur(4px);
+}
+[data-theme="light"] .freshness-badge[data-staleness="FRESH"] {
+  background: rgba(34,197,94,0.12) !important;
+}
+[data-theme="light"] .freshness-badge[data-staleness="RECENT"] {
+  background: rgba(234,179,8,0.12) !important;
+}
+[data-theme="light"] .freshness-badge[data-staleness="STALE"],
+[data-theme="light"] .freshness-badge[data-staleness="CRITICAL"] {
+  background: rgba(239,68,68,0.12) !important;
+}
